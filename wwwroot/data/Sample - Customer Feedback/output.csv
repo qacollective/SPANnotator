@@ -1,0 +1,6 @@
+id,span,text,start,end,timestamp,username
+fb-001,Person,Maria Gonzalez,0,14,2026-02-03T09:12:44.201,demo.user
+fb-001,Organization,Rivertown Logistics,20,39,2026-02-03T09:12:51.880,demo.user
+fb-001,Date,14 March,50,58,2026-02-03T09:13:02.114,demo.user
+fb-004,Organization,Oakfield Systems,29,45,2026-02-03T09:20:10.550,demo.user
+fb-004,Person,Sarah Kim,73,82,2026-02-03T09:20:22.017,demo.user

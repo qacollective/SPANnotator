@@ -1,0 +1,14 @@
+id,span,text,start,end,timestamp,username
+INC-1002,,struck on the shoulder by a falling box,23,62,,ai-span-v1
+INC-1002,,shoulder,37,45,,ai-span-v1
+INC-1002,,high shelf,82,92,,ai-span-v1
+INC-1003,,tripped over a loose cable,10,36,,ai-span-v1
+INC-1003,,ankle,70,75,,ai-span-v1
+INC-1003,,reception,42,51,,ai-span-v1
+INC-1006,,minor burn on the forearm,24,49,,ai-span-v1
+INC-1006,,forearm,42,49,,ai-span-v1
+INC-1006,,server room,80,91,,ai-span-v1
+INC-1009,,felt dizzy and fainted briefly,12,42,,ai-span-v1
+INC-1009,,loading dock,74,86,,ai-span-v1
+INC-1011,,caught briefly in a rotating spindle,32,68,,ai-span-v1
+INC-1011,,sleeve,21,27,,ai-span-v1

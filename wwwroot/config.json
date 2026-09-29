@@ -1,0 +1,59 @@
+{
+  "globalSettings": {
+    "authMode": "simple",
+    "requirePin": true
+  },
+  "defaultCorpus": "Sample - Customer Feedback",
+  "corpora": {
+    "Sample - Customer Feedback": {
+      "title": "Sample: Customer Feedback (Classic Suggestions)",
+      "inputCsvFile": "data/Sample - Customer Feedback/input.csv",
+      "outputCsvFile": "data/Sample - Customer Feedback/output.csv",
+      "suggestionsCsvFile": "data/Sample - Customer Feedback/suggestions.csv",
+      "resultsJsonFile": "data/Sample - Customer Feedback/results.json",
+      "instructions": "data/Sample - Customer Feedback/instructions.html",
+      "suggestionsConfineAnnotations": false,
+      "spanNames": [
+        "Person",
+        "Organization",
+        "Location",
+        "Product",
+        "Date"
+      ],
+      "textColumnName": "text",
+      "idColumnName": "id",
+      "excludeReasons": [
+        "Duplicate record",
+        "Not in English",
+        "Spam or irrelevant",
+        "Other"
+      ]
+    },
+    "Sample - Workplace Incidents": {
+      "title": "Sample: Workplace Incidents (Constrained Suggestions)",
+      "inputCsvFile": "data/Sample - Workplace Incidents/input.csv",
+      "outputCsvFile": "data/Sample - Workplace Incidents/output.csv",
+      "suggestionsCsvFile": "data/Sample - Workplace Incidents/suggestions.csv",
+      "resultsJsonFile": "data/Sample - Workplace Incidents/results.json",
+      "instructions": "data/Sample - Workplace Incidents/instructions.html",
+      "suggestionsConfineAnnotations": true,
+      "externalLinkURL": "https://example.com/incident-system/[RecordId]",
+      "recordContextTemplate": "<div style='margin:0;text-align:left'><div style='margin:0'><strong>Department:</strong> [Department]</div><div style='margin:0'><strong>Reported:</strong> [ReportedDate]</div><div style='margin:0'><strong>Reporter-assessed severity:</strong> [Severity_Reported]</div></div>",
+      "spanNames": [
+        "Cause",
+        "Body Part Affected",
+        "Location",
+        "Severity"
+      ],
+      "textColumnName": "Description",
+      "idColumnName": "IncidentID",
+      "excludeReasons": [
+        "Duplicate record",
+        "Insufficient information",
+        "Out of scope",
+        "Needs re-investigation",
+        "Other"
+      ]
+    }
+  }
+}

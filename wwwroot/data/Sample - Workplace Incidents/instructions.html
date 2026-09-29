@@ -1,0 +1,37 @@
+<h3>Sample Project: Workplace Incidents</h3>
+
+<p>This is a demo corpus showing the more advanced configuration options: the
+<strong>constrained suggestion workflow</strong>, a <strong>context panel</strong> built from
+extra input columns, and an <strong>external system link</strong>.</p>
+
+<h4>What to annotate</h4>
+<ul>
+    <li><strong>Cause</strong> &mdash; the action or condition that caused the incident</li>
+    <li><strong>Body Part Affected</strong> &mdash; the part of the body injured, if any</li>
+    <li><strong>Location</strong> &mdash; where in the workplace the incident happened</li>
+    <li><strong>Severity</strong> &mdash; how serious the outcome was</li>
+</ul>
+
+<h4>Constrained annotation</h4>
+<p>This corpus sets <code>suggestionsConfineAnnotations: true</code>, so you can only annotate the
+spans an AI model has already proposed. Pick a span type, then click anywhere in the text: a
+dropdown lists every suggested span overlapping that point, and hovering previews it in your
+selected color. There's no free-text selection here &mdash; that's the point of this mode, it keeps
+annotations aligned to a fixed set of candidate boundaries.</p>
+
+<h4>Context panel</h4>
+<p>The record's <strong>Department</strong>, <strong>Reported Date</strong>, and the severity the
+reporter originally logged are shown in a "Context" tile above the text, pulled straight from extra
+columns in <code>input.csv</code> via <code>recordContextTemplate</code>. This is useful for giving
+annotators background info that isn't part of the text itself.</p>
+
+<h4>External link</h4>
+<p>The <strong>&uarr;</strong> icon next to the Record ID opens a (placeholder) link to an external
+incident-management system for that record, built from <code>externalLinkURL</code>.</p>
+
+<h4>Try it out</h4>
+<ul>
+    <li><code>INC-1001</code> and <code>INC-1004</code> already have annotations.</li>
+    <li><code>INC-1002</code>, <code>INC-1003</code>, <code>INC-1006</code>, <code>INC-1009</code>,
+        and <code>INC-1011</code> have suggested spans waiting to be classified.</li>
+</ul>

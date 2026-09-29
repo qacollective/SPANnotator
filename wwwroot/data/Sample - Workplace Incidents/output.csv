@@ -1,0 +1,6 @@
+id,span,text,start,end,timestamp,username
+INC-1001,Cause,slipped on a wet floor,12,34,2026-02-10T08:41:09.332,demo.user
+INC-1001,Body Part Affected,elbow,76,81,2026-02-10T08:41:20.017,demo.user
+INC-1001,Location,staff kitchen,44,57,2026-02-10T08:41:30.560,demo.user
+INC-1004,Cause,pinched between the conveyor belt and the guard rail,23,75,2026-02-10T08:50:02.010,demo.user
+INC-1004,Body Part Affected,hand,14,18,2026-02-10T08:50:14.771,demo.user

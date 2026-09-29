@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPANnotator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+    </div>
+
+    <!-- Current User Badge (simple auth mode only) -->
+    <div id="currentUserBadge" class="current-user-badge hidden">
+        Signed in as <strong id="currentUserName"></strong>
+        <button id="switchUserBtn" class="switch-user-btn" title="Sign in as someone else">Switch</button>
+    </div>
+
+    <!-- Side Panel -->
+    <div class="side-panel" id="sidePanel">
+        <div class="side-panel-header">
+            <h3>Select Corpus</h3>
+        </div>
+        <div class="corpus-list" id="corpusList">
+            <!-- Corpus items will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <div class="container">
+        <h1 id="pageTitle">SPANnotator</h1>
+
+        <div class="navigation">
+            <button id="prevBtn" class="nav-arrow">&lt;</button>
+            <div class="info-tiles">
+                <div class="tile data-tile">
+                    <h3>Record</h3>
+                    <div class="tile-content">
+                        <div><strong>Record ID:</strong> <span id="recordId" class="clickable-record-id" title="Click to copy">-</span><button id="copyLinkBtn" class="record-id-icon-btn" title="Copy link to this record">🔗</button><button id="externalLookupBtn" class="record-id-icon-btn" title="Open in external system">↗</button></div>
+                        <div><strong>Record Position:</strong> <span id="currentRecord">0</span> / <span id="totalRecords">0</span></div>
+                        <button id="ignoreRecordBtn" class="ignore-record-btn">Exclude Record</button>
+                        <button id="searchRecordsBtn" class="search-records-btn">Search Records</button>
+                    </div>
+                </div>
+                <div class="tile context-tile" id="contextTile" style="display: none;">
+                    <h3>Context</h3>
+                    <div class="tile-content">
+                        <div id="contextContent" class="context-content"></div>
+                    </div>
+                </div>
+                <div class="tile annotation-tile">
+                    <h3>Annotation</h3>
+                    <div class="tile-content">
+                        <div><strong>Records annotated:</strong> <span id="annotationCount">0</span></div>
+                        <div><strong>Total annotations:</strong> <span id="totalAnnotationCount">0</span></div>
+                        <button id="nextAnnotatedBtn" class="next-annotated-btn">Next Annotated</button>
+                        <button id="nextUnannotatedBtn" class="next-unannotated-btn">Next Unannotated</button>
+                    </div>
+                </div>
+                <div class="tile learning-tile">
+                    <h3>Learning</h3>
+                    <div class="tile-content">
+                        <div><strong>Last Training Run:</strong> <span id="lastTrainingRun">-</span></div>
+                        <div><strong>Accuracy Percent:</strong> <span id="accuracyPercent">-</span></div>
+                        <button id="dataReportBtn" class="report-btn">Data Report</button>
+                        <button id="evaluationReportBtn" class="report-btn">Evaluation Report</button>
+                    </div>
+                </div>
+            </div>
+            <button id="nextBtn" class="nav-arrow">&gt;</button>
+        </div>
+
+        <div class="annotation-buttons">
+            <div id="spanButtons" class="span-buttons"></div>
+            <button id="deleteBtn" class="delete-button" title="Delete annotation">🗑️</button>
+        </div>
+
+        <div id="textDisplay" class="text-display">
+            <div id="textContent">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Modal dialog -->
+    <div id="modalDialog" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Modal</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="modalContent">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Records Modal -->
+    <div id="searchModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Search Records</h2>
+                <span class="close" id="searchModalClose">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="searchContent">
+                    <div class="search-options">
+                        <h3>Search By:</h3>
+                        <div class="search-type-options">
+                            <label>
+                                <input type="radio" name="searchType" value="id" checked>
+                                Record ID
+                            </label>
+                            <label>
+                                <input type="radio" name="searchType" value="position">
+                                Record Position
+                            </label>
+                            <label>
+                                <input type="radio" name="searchType" value="text">
+                                Record Text Content
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="search-input-section">
+                        <input type="text" id="searchInput" placeholder="Enter search term..." />
+                        <button id="searchBtn" class="search-btn">Search</button>
+                        <button id="clearSearchBtn" class="clear-search-btn">Clear</button>
+                    </div>
+
+                    <div class="search-results">
+                        <h4>Search Results:</h4>
+                        <div id="searchResultsList" class="search-results-list">
+                            <p class="no-results">Enter a search term to find records</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Suggestion Selection Dropdown -->
+    <div id="suggestionDropdown" class="suggestion-dropdown" style="display: none;">
+        <div class="suggestion-dropdown-header">
+            <strong>Select a span to annotate:</strong>
+        </div>
+        <div id="suggestionDropdownList" class="suggestion-dropdown-list">
+            <!-- Suggestions will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Annotation Details Toggle Button (right side) -->
+    <div class="details-toggle-button" id="detailsToggle">
+        <span>◀</span>
+    </div>
+
+    <!-- Annotation Details Panel (right side) -->
+    <div class="details-panel" id="detailsPanel">
+        <div class="details-panel-header">
+            <h3>Annotation Details</h3>
+            <span class="close-details" id="closeDetailsBtn">&times;</span>
+        </div>
+
+        <!-- Selected Annotations Section (25%) -->
+        <div class="selected-annotations-section">
+            <h4>Selected Annotations</h4>
+            <div id="selectedAnnotationsList" class="selected-annotations-list">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Available Annotations Section (75%) -->
+        <div class="available-annotations-section">
+            <h4>Available Annotations</h4>
+            <div id="availableAnnotationsList" class="available-annotations-list">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Ignore Record Modal -->
+    <div id="ignoreModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="ignoreModalTitle">Exclude Record</h2>
+                <span class="close" id="ignoreModalClose">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="ignoreContent">
+                    <p id="ignoreWarningMessage" style="color: #e74c3c; font-weight: bold; margin-bottom: 15px;">⚠️ Warning: All existing annotations for this record will be deleted.</p>
+                    <p>Please select a reason for excluding this record:</p>
+                    <select id="ignoreReasonSelect" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 1em;">
+                        <option value="">-- Select a reason --</option>
+                    </select>
+                    <div class="ignore-modal-buttons">
+                        <button id="cancelIgnoreBtn" class="cancel-ignore-btn">Cancel</button>
+                        <button id="confirmIgnoreBtn" class="confirm-ignore-btn">Exclude</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2 id="loadingTitle">Loading Corpus</h2>
+            <p id="loadingMessage">Initializing...</p>
+            <div class="loading-progress-bar">
+                <div id="loadingProgressFill" class="loading-progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Identity Picker (simple auth mode: shown until a name is chosen for this browser) -->
+    <div id="loginOverlay" class="login-overlay hidden">
+        <div class="login-box">
+            <h2>Who's annotating?</h2>
+            <p class="login-subtitle">Pick your name so your annotations are attributed correctly. You'll only need to do this once on this device.</p>
+
+            <div id="loginUserList" class="login-user-list">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <div id="loginPinSection" class="login-pin-section hidden">
+                <p class="login-pin-prompt">PIN for <strong id="loginPinUserName"></strong>:</p>
+                <input type="password" id="loginPinInput" class="login-pin-input" inputmode="numeric" autocomplete="off" maxlength="8" placeholder="PIN">
+                <p id="loginPinHint" class="login-pin-hint hidden">No PIN set for this name yet &mdash; whatever you enter now becomes your PIN for next time.</p>
+                <div class="login-buttons">
+                    <button id="loginBackBtn" class="login-back-btn" type="button">&larr; Back</button>
+                    <button id="loginSubmitBtn" class="login-submit-btn" type="button">Continue</button>
+                </div>
+            </div>
+
+            <p id="loginError" class="login-error hidden"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

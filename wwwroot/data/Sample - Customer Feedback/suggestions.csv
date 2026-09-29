@@ -1,0 +1,9 @@
+id,span,text,start,end,timestamp,username
+fb-003,Person,James Patel,0,11,,ai-ner-v1
+fb-003,Organization,Brightline Software,94,113,,ai-ner-v1
+fb-007,Organization,Northwind Retail,0,16,,ai-ner-v1
+fb-007,Location,Berlin,98,104,,ai-ner-v1
+fb-009,Person,Priya Nair,0,10,,ai-ner-v1
+fb-009,Location,Melbourne,20,29,,ai-ner-v1
+fb-012,Person,David Chen,0,10,,ai-ner-v1
+fb-012,Location,Auckland,62,70,,ai-ner-v1

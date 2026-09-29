@@ -1,0 +1,13 @@
+IncidentID,Description,Department,ReportedDate,Severity_Reported
+INC-1001,An employee slipped on a wet floor near the staff kitchen and bruised their elbow.,Facilities,2026-01-06,Minor
+INC-1002,A warehouse worker was struck on the shoulder by a falling box while restocking a high shelf.,Warehouse,2026-01-09,Moderate
+INC-1003,A visitor tripped over a loose cable near reception and twisted their ankle.,Front Office,2026-01-12,Minor
+INC-1004,An operator's hand was pinched between the conveyor belt and the guard rail while clearing a jam.,Production,2026-01-15,Moderate
+INC-1005,A driver reported neck strain after braking suddenly to avoid a forklift in the loading bay.,Logistics,2026-01-18,Minor
+INC-1006,A technician received a minor burn on the forearm while replacing a fuse in the server room.,IT,2026-01-21,Minor
+INC-1007,A cleaner inhaled fumes after two cleaning chemicals were accidentally mixed in a storeroom.,Facilities,2026-01-24,Moderate
+INC-1008,A worker cut their finger on a box cutter while opening a delivery pallet in the warehouse.,Warehouse,2026-01-27,Minor
+INC-1009,An employee felt dizzy and fainted briefly during a heatwave shift on the loading dock.,Logistics,2026-01-30,Severe
+INC-1010,A contractor fell from the second rung of a stepladder while adjusting ceiling lighting.,Facilities,2026-02-02,Moderate
+INC-1011,A machine operator's sleeve was caught briefly in a rotating spindle before the emergency stop was hit.,Production,2026-02-05,Severe
+INC-1012,An office worker developed wrist pain they attribute to a poorly adjusted keyboard tray.,Admin,2026-02-08,Minor

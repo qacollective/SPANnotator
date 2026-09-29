@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "username": "alex",
+      "displayName": "Alex (Demo)",
+      "pinSalt": "AagZGGLu5mRI38/48sJ2aA==",
+      "pinHash": "6yMyQTSFXvAd96T5y9RdaKVJjpcOa0W\u002BjE5HsF9HLgU="
+    },
+    {
+      "username": "sam",
+      "displayName": "Sam (Demo)",
+      "pinSalt": "QncCEhVlFYysq6D2qHiTag==",
+      "pinHash": "f2zBn1VUphq7yy/kxTS2EMZxLBWWmUGqFQO0/PzzoAA="
+    }
+  ]
+}

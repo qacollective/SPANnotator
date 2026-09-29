@@ -1,0 +1,41 @@
+# .NET build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# Publish output
+publish/
+
+# Annotation data
+#
+# wwwroot/data holds the CSVs, HTML reports, and lock files for each
+# annotation corpus. Real project data is frequently sensitive (free-text
+# incident reports, customer records, etc.) and can also be very large, so
+# it is excluded from version control by default.
+#
+# The two bundled sample corpora are explicitly re-included below so a
+# fresh checkout has something to run immediately. When you add your own
+# corpus, either keep it out of git (recommended for anything containing
+# real or sensitive data) or add a matching !wwwroot/data/<Your Corpus>/
+# rule if you specifically want it tracked.
+wwwroot/data/*
+!wwwroot/data/locks/
+wwwroot/data/locks/*
+!wwwroot/data/locks/.gitkeep
+!wwwroot/data/Sample - Customer Feedback/
+!wwwroot/data/Sample - Workplace Incidents/
+
+# OS cruft
+.DS_Store
+Thumbs.db
